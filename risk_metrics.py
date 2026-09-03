@@ -12,3 +12,4 @@ def calculate_sharpe_ratio(returns, risk_free_rate=0.02):
     annualized_vol = calculate_volatility(returns)
     sharpe = (annualized_return - risk_free_rate) / annualized_vol
     return sharpe
+ 
