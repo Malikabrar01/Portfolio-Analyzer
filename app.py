@@ -37,7 +37,36 @@ if run_button:
             for ticker in tickers
         }
 
-    st.success("Data fetched!")
-    for ticker in tickers:
-        st.write(f"{ticker} last close price:", price_data[ticker]["Close"].iloc[-1])
+        st.success("Data fetched!")
+
+        value_series = portfolio_value_over_time(price_data, shares)
+
+        st.subheader("Portfolio Value Over Time")
+        st.line_chart(value_series)
+
+
+        st.subheader("Current Allocation")
+        allocation = portfolio_allocation(price_data, shares)
+
+        import pandas as pd
+        allocation_df = pd.DataFrame({
+            "Ticker": list(allocation.keys()),
+            "Allocation %": list(allocation.values())
+        })
+        st.bar_chart(allocation_df.set_index("Ticker"))
+
+        st.subheader("Risk Metrics per Stock")
+        metrics_rows = []
+        for ticker in tickers:
+               returns = compute_daily_returns(price_data[ticker])
+               vol = calculate_volatility(returns)
+               sharpe = calculate_sharpe_ratio(returns)
+               metrics_rows.append({
+                  "Ticker": ticker,
+                  "Annualized Volatility": f"{vol*100:.2f}%",
+                  "Sharpe Ratio": f"{sharpe:.2f}"
+              })
+
+        st.table(metrics_rows)
+
 
