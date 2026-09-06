@@ -14,6 +14,17 @@ A Streamlit web app that lets you build a mock stock portfolio, visualize its va
   - **Annualized Volatility** — how much a stock's returns swing year over year
   - **Sharpe Ratio** — risk-adjusted return relative to a risk-free rate
 
+  ## Screenshots
+
+**Portfolio Setup & Overview**
+![Homepage](Resources/homepage.png)
+
+**Portfolio Value Over Time**
+![Portfolio Value Chart](Resources/portfolio-value.png)
+
+**Current Allocation & Risk Metrics**
+![Allocation and Risk Metrics](Resources/allocation-and-risk.png)
+
 ## Tech Stack
 
 - **Python** — core logic
